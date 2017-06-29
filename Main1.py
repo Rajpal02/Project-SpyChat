@@ -44,15 +44,16 @@ def read_a_message():
         print 'No such file present'
         exit()
 
-def read_chat():
+def read_chat(Spy_name):
     read_for = select_a_friend()
     for chats in Friends[read_for].chats:
 
         ctime = colored(chats.time.strftime("%d:%B:%Y"), 'blue')
         cspy = colored(Friends[read_for].name, 'red')
+        cdfg = colored(Spy_name,'green')
     #According to the message sender the chat message are printed
         if chats.sent_by_me:
-                print 'At ['+ctime+']'+ 'you said:'+" "+chats.message
+                print 'At ['+ctime+']'+ cdfg + ' said: '+chats.message
         else:
                 print 'At ['+ctime+']'+ cspy + " said: " + chats.message
 
@@ -186,7 +187,7 @@ def choose_an_option(Spy_name,Spy_age,Spy_rating):
             elif q == 4:
                 read_a_message()
             elif q == 5:
-                read_chat()
+                read_chat(Spy_name)
             elif q==6:
                 exit()
             else:
